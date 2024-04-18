@@ -1,0 +1,1200 @@
+openapi: 3.0.3
+info:
+  version: 'latest'
+  title: Journal - API
+  description: An application Diary API
+
+paths:
+
+  ## Health resources
+  '/ping':
+    get:
+      tags:
+        - Health
+      summary: ping
+      operationId: ping
+      responses:
+        '200':
+          description: pong
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  ## User resources
+  '/users':
+    get:
+      tags:
+        - User
+      summary: get all users
+      operationId: getUsers
+      parameters:
+        - name: page
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/page'
+        - name: page_size
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/pageSize'
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/users/{id}':
+    get:
+      tags:
+        - User
+      summary: get user by id
+      operationId: getUserById
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User by identifier
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+    put:
+      tags:
+        - User
+      summary: create or update user by id
+      operationId: crupdateUserById
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: User to create or update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: created or updated user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      tags:
+        - User
+      summary: delete user by id
+      operationId: deleteUserById
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: deleted user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  ## Journal resources
+  '/users/{id}/Journals':
+    get:
+      tags:
+        - JournalEntries
+      summary: get all journal entries by user id
+      operationId: getJournalsByUserId
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/page'
+        - name: page_size
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/pageSize'
+      responses:
+        '200':
+          description: List of journal entries by user id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JournalEntries'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/users/{id}/Journals/{id}':
+    get:
+      tags:
+        - JournalEntries
+      summary: get journal entries by id
+      operationId: getJournalById
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Journal entries by id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JournalEntries'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+    put:
+      tags:
+        - JournalEntries
+      summary: create or update journal entries by id
+      operationId: crupdateJournalById
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Journal entries to create or update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JournalEntries'
+      responses:
+        '200':
+          description: created or updated journal entries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JournalEntries'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+    delete:
+      tags:
+        - JournalEntries
+      summary: delete journal entries by id
+      operationId: deleteJournalById
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: deleted journal entries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JournalEntries'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  ## Tag resources
+  '/tagCategories':
+    get:
+      tags:
+        - Tag
+      summary: get all tag categories
+      operationId: getTagCategories
+      responses:
+        '200':
+          description: List of tag categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TagCategories'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/tagCategories/{id}/tags':
+    get:
+      tags:
+        - Tag
+      summary: get all tags by tag categories id
+      operationId: getTags
+      parameters:
+        - name: tag_categories_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of tags by tag categories id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tag'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/tagCategories/{id}/tags/{id}':
+    get:
+      tags:
+        - Tag
+      summary: get tag by id
+      operationId: getTagById
+      parameters:
+        - name: tag_categories_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: tag_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: identified tag
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/journals/{id}/tags':
+    get:
+      tags:
+        - Tag
+      summary: get all tags by journal entries id
+      operationId: getTagsByJournalId
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of tags by journal entries id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tag'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+    post:
+      tags:
+        - Tag
+      summary: Add tag in journal entries
+      operationId: AddJournalTag
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: tag to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: Added tag
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/journals/{id}/tags/{id}':
+    delete:
+      tags:
+        - Tag
+      summary: Delete tag in journal entries
+      operationId: DeleteJournalTag
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: tag_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted tag
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  ## Photo resources
+  '/users/{id}/photos':
+    get:
+      tags:
+        - Photo
+      summary: get all photos by user id
+      operationId: getPhotosByUserId
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/page'
+        - name: page_size
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/pageSize'
+      responses:
+        '200':
+          description: List of photos by user id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Photo'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/journals/{id}/photos':
+    get:
+      tags:
+        - Photo
+      summary: get all photos by journal entries id
+      operationId: getPhotosByJournalId
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of photos by journal id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Photo'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+    post:
+      tags:
+        - Photo
+      summary: Add photo to journal entries
+      operationId: AddPhoto
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: photo to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Photo'
+      responses:
+        '200':
+          description: Added photo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photo'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/journals/{id}/photos/{id}':
+    get:
+      tags:
+        - Photo
+      summary: get photo by id
+      operationId: getPhotoById
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: photo_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Identified photo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photo'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+    delete:
+      tags:
+        - Photo
+      summary: Delete photo to journal entries
+      operationId: DeletePhotoById
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: photo_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted photo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photo'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  ## Audio resources
+  '/users/{id}/audios':
+    get:
+      tags:
+        - Audio
+      summary: get all audios by user id
+      operationId: getAudiosByUserId
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/page'
+        - name: page_size
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/pageSize'
+      responses:
+        '200':
+          description: List of audios by user id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Audio'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/journals/{id}/audios':
+    get:
+      tags:
+        - Audio
+      summary: get all audios by journal id
+      operationId: getAudiosByJournalId
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of audios by journal id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Audio'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+    post:
+      tags:
+        - Audio
+      summary: Add audio to journal entries
+      operationId: AddAudio
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Audio to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Audio'
+      responses:
+        '200':
+          description: Added audio
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Audio'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/journals/{id}/audios/{id}':
+    get:
+      tags:
+        - Audio
+      summary: get audio by id
+      operationId: getAudioById
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: audio_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Identified audio
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Audio'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+    delete:
+      tags:
+        - Audio
+      summary: Delete audio to journal entries
+      operationId: DeleteAudioById
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: audio_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted audio
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Audio'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  ## Video resources
+  '/users/{id}/videos':
+    get:
+      tags:
+        - Video
+      summary: get all videos by user id
+      operationId: getVideosByUserId
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/page'
+        - name: page_size
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/pageSize'
+      responses:
+        '200':
+          description: List of videos by user id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Video'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/journals/{id}/videos':
+    get:
+      tags:
+        - Video
+      summary: get all videos by journal entries id
+      operationId: getVideosByJournalId
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of videos by journal id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Video'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+    post:
+      tags:
+        - Video
+      summary: Add video to journal entries
+      operationId: AddVideo
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Video to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Video'
+      responses:
+        '200':
+          description: Added video
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/journals/{id}/videos/{id}':
+    get:
+      tags:
+        - Video
+      summary: get video by id
+      operationId: getVideoById
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: video_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Identified video
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+    delete:
+      tags:
+        - Video
+      summary: Delete video to journal entries
+      operationId: DeleteVideoById
+      parameters:
+        - name: journal_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: video_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted video
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+  responses:
+    ## response model
+    '400':
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BadRequestException'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotAuthorizedException'
+    '404':
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceNotFoundException'
+    '429':
+      description: Too many requests to the API
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TooManyRequestsException'
+    '500':
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InternalServerException'
+
+  schemas:
+
+    ## Tag categories model
+    TagCategories:
+      type: object
+      properties:
+        id:
+          type: string
+        category_name:
+          type: string
+
+    ## Tags model
+    Tag:
+      type: object
+      properties:
+        id:
+          type: string
+        tag_name:
+          type: string
+
+    ## Journal tags model
+    JournalTags:
+      type: object
+      properties:
+        id:
+          type: string
+        tag_id:
+          type: string
+        journal_entries_id:
+          type: string
+
+    ## Enum type
+    Sex:
+      type: string
+      enum:
+        - Male
+        - Female
+    page:
+      type: integer
+      description: start at `1`
+    pageSize:
+      type: integer
+      description: cannot exceed `50`
+
+    ## User model
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        birth_date:
+          type: string
+          format: date
+        sex:
+          $ref: '#/components/schemas/Sex'
+
+    ## Journal entries model
+    JournalEntries:
+      type: object
+      properties:
+        id:
+          type: string
+        creation_date:
+          type: string
+          format: date
+        update_date:
+          type: string
+          format: date
+        title:
+          type: string
+        content:
+          type: string
+
+    ## Multimedia files model
+    Video:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        type_mime:
+          type: string
+        file_size:
+          type: integer
+        filepath:
+          type: string
+        duration_second:
+          type: integer
+    Audio:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        type_mime:
+          type: string
+        file_size:
+          type: integer
+        filepath:
+          type: string
+        duration_second:
+          type: integer
+    Photo:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        type_mime:
+          type: string
+        file_size:
+          type: integer
+        filepath:
+          type: string
+
+    ## Exception model
+    Exception:
+      type: object
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+    BadRequestException:
+      allOf:
+        - $ref: '#/components/schemas/Exception'
+      example:
+        type: BadRequestException
+        message: Bad request
+    NotAuthorizedException:
+      allOf:
+        - $ref: '#/components/schemas/Exception'
+      example:
+        type: NotAuthorizedException
+        message: Not authorized
+    ResourceNotFoundException:
+      allOf:
+        - $ref: '#/components/schemas/Exception'
+      example:
+        type: ResourceNotFoundException
+        message: Resource of type <T> identified by <I> not found
+    TooManyRequestsException:
+      allOf:
+        - $ref: '#/components/schemas/Exception'
+      example:
+        type: TooManyRequestsException
+        message: Too many requests
+    InternalServerException:
+      allOf:
+        - $ref: '#/components/schemas/Exception'
+      example:
+        type: InternalServerException
+        message: Unexpected error

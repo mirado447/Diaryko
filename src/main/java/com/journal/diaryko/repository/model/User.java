@@ -1,4 +1,4 @@
-package com.journal.diaryko.model;
+package com.journal.diaryko.repository.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,4 +1,4 @@
-package com.journal.diaryko.model;
+package com.journal.diaryko.repository.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -16,16 +16,17 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "journal")
-public class Journal {
+@Table(name = "video")
+public class Video {
     @Id
-    private String id_journal;
+    private String id_video;
+    private String name;
+    private String type_mime;
     private LocalDate create_at;
-    private LocalDate update_at;
-    private String title;
-    private String content;
+    private int file_size;
+    private String filepath;
 
     @ManyToOne
-    @JoinColumn(name = "id_user")
-    private User user;
+    @JoinColumn(name = "id_journal")
+    private Journal journal;
 }
