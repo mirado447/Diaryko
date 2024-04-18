@@ -20,7 +20,7 @@ public class UserController {
     @GetMapping("users")
     public List<User> getUsers(
             @RequestParam int page,
-            @RequestParam(value = "page_size") int pageSize){
+            @RequestParam(value = "page_size") int pageSize){  //value = "page_size" is the name of query params in url
         PageFromOne pageFromOne = new PageFromOne(page);
         BoundedPageSize boundedPageSize = new BoundedPageSize(pageSize);
         return service.getAllUser(pageFromOne, boundedPageSize);
