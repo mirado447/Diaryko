@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Table(name = "\"user\"") // name of table, if not specified the default name will be User.
 public class User {
     @Id
-    private String id_user;
+    private String id;
     private String firstname;
     private String lastname;
     private String email;
