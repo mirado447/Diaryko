@@ -2,6 +2,7 @@ package com.journal.diaryko.service;
 
 import com.journal.diaryko.model.BoundedPageSize;
 import com.journal.diaryko.model.PageFromOne;
+import com.journal.diaryko.model.exception.NotFoundException;
 import com.journal.diaryko.repository.UserRepository;
 import com.journal.diaryko.repository.model.User;
 import lombok.AllArgsConstructor;
@@ -18,5 +19,11 @@ public class UserService {
     public List<User> getAllUser(PageFromOne page, BoundedPageSize pageSize){
         Pageable pageable = PageRequest.of(page.getValue() - 1 , pageSize.getValue()); // - 1 because the default number of first page is 0.
         return repository.findAllUser(pageable);
+    }
+
+    public User getUserById(String id){
+        return repository
+                .findById(id)
+                .orElseThrow(() -> new NotFoundException("User with id " + id + " not found"));
     }
 }
