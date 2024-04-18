@@ -18,3 +18,5 @@ public class BoundedPageSize {
         this.value = value;
     }
 }
+
+//This class verify the user entries (page size)

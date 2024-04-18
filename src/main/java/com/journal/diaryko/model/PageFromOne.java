@@ -15,3 +15,5 @@ public class PageFromOne {
         this.value = value;
     }
 }
+
+//This class verify the user entries (page)
