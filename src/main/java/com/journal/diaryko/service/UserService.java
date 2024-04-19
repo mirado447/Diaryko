@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -25,5 +26,21 @@ public class UserService {
         return repository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException("User with id " + id + " not found"));
+    }
+
+    public User saveUser(String id, User user){
+        Optional<User> optionalUser = repository.findById(id);
+        if(optionalUser.isPresent()){
+            User userToUpdate = optionalUser.get();
+            userToUpdate.setFirstname(user.getFirstname());
+            userToUpdate.setLastname(user.getLastname());
+            userToUpdate.setEmail(user.getEmail());
+            userToUpdate.setBirthdate(user.getBirthdate());
+            userToUpdate.setSex(user.getSex());
+            userToUpdate.setPassword(user.getPassword());
+        }else {
+            repository.save(user);
+        }
+        return user;
     }
 }

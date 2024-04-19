@@ -5,10 +5,7 @@ import com.journal.diaryko.model.PageFromOne;
 import com.journal.diaryko.repository.model.User;
 import com.journal.diaryko.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,12 @@ public class UserController {
     @GetMapping("/users/{id}")
     public User getUserById(@PathVariable String id){
         return service.getUserById(id);
+    }
+
+    @PutMapping("/users/{id}")
+    public User crupdateUser(
+            @PathVariable String id,
+            @RequestBody User user){
+        return service.saveUser(id, user);
     }
 }
