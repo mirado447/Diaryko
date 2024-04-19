@@ -43,4 +43,12 @@ public class UserService {
         }
         return user;
     }
+
+    public User deleteUser(String id){
+        User userToDelete = repository
+                .findById(id)
+                .orElseThrow(() -> new NotFoundException("User with id " + id + " not found"));
+        repository.delete(userToDelete);
+        return userToDelete;
+    }
 }

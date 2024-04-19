@@ -34,4 +34,8 @@ public class UserController {
             @RequestBody User user){
         return service.saveUser(id, user);
     }
+    @DeleteMapping("/users/{id}")
+    public User deleteUser(@PathVariable String id){
+        return service.deleteUser(id);
+    }
 }
