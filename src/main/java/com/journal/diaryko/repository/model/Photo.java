@@ -19,7 +19,7 @@ import java.time.LocalDate;
 @Table(name = "photo")
 public class Photo {
     @Id
-    private String id_photo;
+    private String id;
     private String name;
     private String type_mime;
     private LocalDate create_at;

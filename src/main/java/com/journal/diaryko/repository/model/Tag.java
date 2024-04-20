@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "tag")
 public class Tag {
     @Id
-    private String id_tag;
+    private String id;
     private String tag_name;
 
     @ManyToOne

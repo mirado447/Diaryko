@@ -19,13 +19,13 @@ import java.time.LocalDate;
 @Table(name = "journal")
 public class Journal {
     @Id
-    private String id_journal;
+    private String id;
     private LocalDate create_at;
     private LocalDate update_at;
     private String title;
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "id_user") //Stay id_user because it's the name of join column.
     private User user;
 }

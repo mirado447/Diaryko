@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "journal_tags")
 public class JournalTags {
     @Id
-    private String id_journal_tags;
+    private String id;
 
     @ManyToOne
     @JoinColumn(name = "id_journal")
