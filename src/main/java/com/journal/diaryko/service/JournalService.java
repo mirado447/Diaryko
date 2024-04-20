@@ -20,11 +20,23 @@ public class JournalService {
 
     private final JournalRepository journalRepository;
     private final UserRepository userRepository;
-    public List<Journal> getJournalsByUserId(String userId, PageFromOne page, BoundedPageSize boundedPageSize){
+    public List<Journal> getJournalsByUserId(String uid, PageFromOne page, BoundedPageSize boundedPageSize){
         User user = userRepository
-                .findById(userId)
-                .orElseThrow(() -> new NotFoundException("User with id " + userId + " not found"));
+                .findById(uid)
+                .orElseThrow(() -> new NotFoundException("User with id " + uid + " not found"));
         Pageable pageable = PageRequest.of(page.getValue() - 1, boundedPageSize.getValue());
         return journalRepository.findAllByUserId(user.getId(), pageable);
+    }
+
+    public Journal getJournalByIdAndUserId(String uid, String jid){
+        User user = userRepository
+                .findById(uid)
+                .orElseThrow(() -> new NotFoundException("User with id " + uid + " not found"));
+        Journal journal = journalRepository.findByIdAndUserId(jid, user.getId());
+        if(journal != null){
+            return journal;
+        }else{
+            throw new NotFoundException("Journal with id " + jid + ", for user with id " + uid + " not found");
+        }
     }
 }

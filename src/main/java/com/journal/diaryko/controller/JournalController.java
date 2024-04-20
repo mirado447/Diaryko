@@ -26,4 +26,10 @@ public class JournalController {
         BoundedPageSize boundedPageSize = new BoundedPageSize(pageSize);
         return service.getJournalsByUserId(userId, pageFromOne, boundedPageSize);
     }
+    @GetMapping("/users/{uid}/journals/{jid}")
+    public Journal getJournalById(
+            @PathVariable String uid,
+            @PathVariable String jid){
+        return service.getJournalByIdAndUserId(uid, jid);
+    }
 }

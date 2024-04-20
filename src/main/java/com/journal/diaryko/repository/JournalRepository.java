@@ -9,5 +9,7 @@ import java.util.List;
 
 @Repository
 public interface JournalRepository extends JpaRepository<Journal, String> {
-    List<Journal> findAllByUserId(String id, Pageable pageable);
+    List<Journal> findAllByUserId(String uid, Pageable pageable);
+
+    Journal findByIdAndUserId(String jid, String uid);
 }
