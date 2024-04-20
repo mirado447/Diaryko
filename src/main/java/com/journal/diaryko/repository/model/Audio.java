@@ -20,12 +20,13 @@ import java.time.LocalDate;
 @Table(name = "audio")
 public class Audio {
     @Id
-    private String id_audio;
+    private String id;
     private String name;
     private String type_mime;
     private LocalDate create_at;
     private int file_size;
     private String filepath;
+    private int duration;
 
     @ManyToOne
     @JoinColumn(name = "id_journal")

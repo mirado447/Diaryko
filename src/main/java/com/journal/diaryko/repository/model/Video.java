@@ -19,12 +19,13 @@ import java.time.LocalDate;
 @Table(name = "video")
 public class Video {
     @Id
-    private String id_video;
+    private String id;
     private String name;
     private String type_mime;
     private LocalDate create_at;
     private int file_size;
     private String filepath;
+    private int duration;
 
     @ManyToOne
     @JoinColumn(name = "id_journal")
