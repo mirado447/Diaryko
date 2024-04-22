@@ -18,4 +18,10 @@ public class TagController {
     public List<Tag> getTags(@PathVariable String cid){
         return tagService.getTagsByCategoryId(cid);
     }
+
+    @GetMapping("/tagCategories/{cid}/tags/{tid}")
+    public Tag getTagById(@PathVariable String cid,
+                             @PathVariable String tid){
+        return tagService.getByIdAndCategoryId(tid, cid);
+    }
 }
