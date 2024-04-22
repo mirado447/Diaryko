@@ -5,10 +5,7 @@ import com.journal.diaryko.model.PageFromOne;
 import com.journal.diaryko.repository.model.Journal;
 import com.journal.diaryko.service.JournalService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +28,12 @@ public class JournalController {
             @PathVariable String uid,
             @PathVariable String jid){
         return service.getJournalByIdAndUserId(uid, jid);
+    }
+    @PutMapping("/users/{uid}/journals/{jid}")
+    public Journal crupdateJournal(
+            @PathVariable String uid,
+            @PathVariable String jid,
+            @RequestBody Journal journal){
+      return service.saveJournal(uid, jid, journal);
     }
 }
