@@ -22,6 +22,6 @@ public class Tag {
     private String tag_name;
 
     @ManyToOne
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "id_category")
     private TagCategories tagCategories;
 }
