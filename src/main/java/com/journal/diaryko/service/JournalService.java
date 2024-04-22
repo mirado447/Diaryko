@@ -51,4 +51,15 @@ public class JournalService {
             return journalRepository.save(journal);
         }
     }
+
+    public Journal deletejournal(String uid, String jid){
+        User user = userService.getUserById(uid);
+        Journal journal = journalRepository.findByIdAndUserId(jid, user.getId());
+        if(journal != null){
+            journalRepository.delete(journal);
+        }else{
+            throw new NotFoundException("Journal with id " + jid + ", for user with id " + uid + " not found");
+        }
+        return journal;
+    }
 }

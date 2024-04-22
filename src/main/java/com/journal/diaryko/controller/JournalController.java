@@ -36,4 +36,10 @@ public class JournalController {
             @RequestBody Journal journal){
       return service.saveJournal(uid, jid, journal);
     }
+    @DeleteMapping("/users/{uid}/journals/{jid}")
+    public Journal deleteJournalById(
+            @PathVariable String uid,
+            @PathVariable String jid){
+        return service.deletejournal(uid, jid);
+    }
 }
