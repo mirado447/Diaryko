@@ -10,7 +10,6 @@ import com.journal.diaryko.endpoint.rest.model.InternalServerException;
 import com.journal.diaryko.endpoint.rest.model.NotAuthorizedException;
 import com.journal.diaryko.endpoint.rest.model.ResourceNotFoundException;
 import com.journal.diaryko.endpoint.rest.model.TooManyRequestsException;
-import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -20,6 +19,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,10 +36,9 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T07:38:36.366062500+03:00[Africa/Nairobi]")
-
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
 @Validated
-@io.swagger.v3.oas.annotations.tags.Tag(name = "Health", description = "the Health API")
+@Tag(name = "Health", description = "the Health API")
 public interface PingApi {
 
     /**

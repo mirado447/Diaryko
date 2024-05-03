@@ -1,16 +1,26 @@
 package com.journal.diaryko.endpoint.rest.model;
-import io.swagger.annotations.ApiModelProperty;
+
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.springframework.validation.annotation.Validated;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Gets or Sets Sex
  */
+
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
 public enum Sex {
   
   MALE("Male"),
@@ -23,20 +33,24 @@ public enum Sex {
     this.value = value;
   }
 
-  @Override
   @JsonValue
+  public String getValue() {
+    return value;
+  }
+
+  @Override
   public String toString() {
     return String.valueOf(value);
   }
 
   @JsonCreator
-  public static Sex fromValue(String text) {
+  public static Sex fromValue(String value) {
     for (Sex b : Sex.values()) {
-      if (String.valueOf(b.value).equals(text)) {
+      if (b.value.equals(value)) {
         return b;
       }
     }
-    return null;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }
 

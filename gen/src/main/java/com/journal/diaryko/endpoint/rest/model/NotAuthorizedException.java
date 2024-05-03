@@ -1,25 +1,29 @@
 package com.journal.diaryko.endpoint.rest.model;
-import io.swagger.annotations.ApiModelProperty;
+
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.springframework.validation.annotation.Validated;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * NotAuthorizedException
  */
-@Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T07:38:36.366062500+03:00[Africa/Nairobi]")
 
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
+public class NotAuthorizedException {
 
-public class NotAuthorizedException   {
-  @JsonProperty("type")
-  private String type = ;
+  private String type;
 
-  @JsonProperty("message")
-  private String message = ;
+  private String message;
 
   public NotAuthorizedException type(String type) {
     this.type = type;
@@ -29,10 +33,10 @@ public class NotAuthorizedException   {
   /**
    * Get type
    * @return type
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("type")
   public String getType() {
     return type;
   }
@@ -49,10 +53,10 @@ public class NotAuthorizedException   {
   /**
    * Get message
    * @return message
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("message")
   public String getMessage() {
     return message;
   }
@@ -61,9 +65,8 @@ public class NotAuthorizedException   {
     this.message = message;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -71,19 +74,19 @@ public class NotAuthorizedException   {
       return false;
     }
     NotAuthorizedException notAuthorizedException = (NotAuthorizedException) o;
-    return Objects.equals(this.type, notAuthorizedException.type)Objects.equals(this.message, notAuthorizedException.message);
+    return Objects.equals(this.type, notAuthorizedException.type) &&
+        Objects.equals(this.message, notAuthorizedException.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(typemessage);
+    return Objects.hash(type, message);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotAuthorizedException {\n");
-    
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
@@ -94,7 +97,7 @@ public class NotAuthorizedException   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

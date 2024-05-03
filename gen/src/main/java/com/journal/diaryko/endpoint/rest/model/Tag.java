@@ -1,25 +1,29 @@
 package com.journal.diaryko.endpoint.rest.model;
-import io.swagger.annotations.ApiModelProperty;
+
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.springframework.validation.annotation.Validated;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Tag
  */
-@Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T07:38:36.366062500+03:00[Africa/Nairobi]")
 
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
+public class Tag {
 
-public class Tag   {
-  @JsonProperty("id")
-  private String id = ;
+  private String id;
 
-  @JsonProperty("tag_name")
-  private String tagName = ;
+  private String tagName;
 
   public Tag id(String id) {
     this.id = id;
@@ -29,10 +33,10 @@ public class Tag   {
   /**
    * Get id
    * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
   public String getId() {
     return id;
   }
@@ -49,10 +53,10 @@ public class Tag   {
   /**
    * Get tagName
    * @return tagName
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "tag_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("tag_name")
   public String getTagName() {
     return tagName;
   }
@@ -61,9 +65,8 @@ public class Tag   {
     this.tagName = tagName;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -71,19 +74,19 @@ public class Tag   {
       return false;
     }
     Tag tag = (Tag) o;
-    return Objects.equals(this.id, tag.id)Objects.equals(this.tagName, tag.tagName);
+    return Objects.equals(this.id, tag.id) &&
+        Objects.equals(this.tagName, tag.tagName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idtagName);
+    return Objects.hash(id, tagName);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Tag {\n");
-    
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    tagName: ").append(toIndentedString(tagName)).append("\n");
     sb.append("}");
@@ -94,7 +97,7 @@ public class Tag   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

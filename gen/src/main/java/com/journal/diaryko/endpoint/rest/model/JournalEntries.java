@@ -1,36 +1,39 @@
 package com.journal.diaryko.endpoint.rest.model;
-import io.swagger.annotations.ApiModelProperty;
+
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.validation.annotation.Validated;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * JournalEntries
  */
-@Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T07:38:36.366062500+03:00[Africa/Nairobi]")
 
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
+public class JournalEntries {
 
-public class JournalEntries   {
-  @JsonProperty("id")
-  private String id = ;
+  private String id;
 
-  @JsonProperty("creation_date")
-  private LocalDate creationDate = ;
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+  private LocalDate creationDate;
 
-  @JsonProperty("update_date")
-  private LocalDate updateDate = ;
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+  private LocalDate updateDate;
 
-  @JsonProperty("title")
-  private String title = ;
+  private String title;
 
-  @JsonProperty("content")
-  private String content = ;
+  private String content;
 
   public JournalEntries id(String id) {
     this.id = id;
@@ -40,10 +43,10 @@ public class JournalEntries   {
   /**
    * Get id
    * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
   public String getId() {
     return id;
   }
@@ -60,10 +63,10 @@ public class JournalEntries   {
   /**
    * Get creationDate
    * @return creationDate
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  @Valid 
+  @Schema(name = "creation_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("creation_date")
   public LocalDate getCreationDate() {
     return creationDate;
   }
@@ -80,10 +83,10 @@ public class JournalEntries   {
   /**
    * Get updateDate
    * @return updateDate
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  @Valid 
+  @Schema(name = "update_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("update_date")
   public LocalDate getUpdateDate() {
     return updateDate;
   }
@@ -100,10 +103,10 @@ public class JournalEntries   {
   /**
    * Get title
    * @return title
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("title")
   public String getTitle() {
     return title;
   }
@@ -120,10 +123,10 @@ public class JournalEntries   {
   /**
    * Get content
    * @return content
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "content", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("content")
   public String getContent() {
     return content;
   }
@@ -132,9 +135,8 @@ public class JournalEntries   {
     this.content = content;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -142,19 +144,22 @@ public class JournalEntries   {
       return false;
     }
     JournalEntries journalEntries = (JournalEntries) o;
-    return Objects.equals(this.id, journalEntries.id)Objects.equals(this.creationDate, journalEntries.creationDate)Objects.equals(this.updateDate, journalEntries.updateDate)Objects.equals(this.title, journalEntries.title)Objects.equals(this.content, journalEntries.content);
+    return Objects.equals(this.id, journalEntries.id) &&
+        Objects.equals(this.creationDate, journalEntries.creationDate) &&
+        Objects.equals(this.updateDate, journalEntries.updateDate) &&
+        Objects.equals(this.title, journalEntries.title) &&
+        Objects.equals(this.content, journalEntries.content);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idcreationDateupdateDatetitlecontent);
+    return Objects.hash(id, creationDate, updateDate, title, content);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JournalEntries {\n");
-    
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
     sb.append("    updateDate: ").append(toIndentedString(updateDate)).append("\n");
@@ -168,7 +173,7 @@ public class JournalEntries   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

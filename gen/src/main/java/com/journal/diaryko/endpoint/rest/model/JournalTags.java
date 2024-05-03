@@ -1,28 +1,31 @@
 package com.journal.diaryko.endpoint.rest.model;
-import io.swagger.annotations.ApiModelProperty;
+
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.springframework.validation.annotation.Validated;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * JournalTags
  */
-@Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T07:38:36.366062500+03:00[Africa/Nairobi]")
 
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
+public class JournalTags {
 
-public class JournalTags   {
-  @JsonProperty("id")
-  private String id = ;
+  private String id;
 
-  @JsonProperty("tag_id")
-  private String tagId = ;
+  private String tagId;
 
-  @JsonProperty("journal_entries_id")
-  private String journalEntriesId = ;
+  private String journalEntriesId;
 
   public JournalTags id(String id) {
     this.id = id;
@@ -32,10 +35,10 @@ public class JournalTags   {
   /**
    * Get id
    * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
   public String getId() {
     return id;
   }
@@ -52,10 +55,10 @@ public class JournalTags   {
   /**
    * Get tagId
    * @return tagId
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("tag_id")
   public String getTagId() {
     return tagId;
   }
@@ -72,10 +75,10 @@ public class JournalTags   {
   /**
    * Get journalEntriesId
    * @return journalEntriesId
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "journal_entries_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("journal_entries_id")
   public String getJournalEntriesId() {
     return journalEntriesId;
   }
@@ -84,9 +87,8 @@ public class JournalTags   {
     this.journalEntriesId = journalEntriesId;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -94,19 +96,20 @@ public class JournalTags   {
       return false;
     }
     JournalTags journalTags = (JournalTags) o;
-    return Objects.equals(this.id, journalTags.id)Objects.equals(this.tagId, journalTags.tagId)Objects.equals(this.journalEntriesId, journalTags.journalEntriesId);
+    return Objects.equals(this.id, journalTags.id) &&
+        Objects.equals(this.tagId, journalTags.tagId) &&
+        Objects.equals(this.journalEntriesId, journalTags.journalEntriesId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idtagIdjournalEntriesId);
+    return Objects.hash(id, tagId, journalEntriesId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JournalTags {\n");
-    
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    tagId: ").append(toIndentedString(tagId)).append("\n");
     sb.append("    journalEntriesId: ").append(toIndentedString(journalEntriesId)).append("\n");
@@ -118,7 +121,7 @@ public class JournalTags   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

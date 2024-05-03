@@ -1,37 +1,37 @@
 package com.journal.diaryko.endpoint.rest.model;
-import io.swagger.annotations.ApiModelProperty;
+
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.springframework.validation.annotation.Validated;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Audio
  */
-@Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T07:38:36.366062500+03:00[Africa/Nairobi]")
 
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
+public class Audio {
 
-public class Audio   {
-  @JsonProperty("id")
-  private String id = ;
+  private String id;
 
-  @JsonProperty("filename")
-  private String filename = ;
+  private String filename;
 
-  @JsonProperty("type_mime")
-  private String typeMime = ;
+  private String typeMime;
 
-  @JsonProperty("file_size")
-  private Integer fileSize = ;
+  private Integer fileSize;
 
-  @JsonProperty("filepath")
-  private String filepath = ;
+  private String filepath;
 
-  @JsonProperty("duration_second")
-  private Integer durationSecond = ;
+  private Integer durationSecond;
 
   public Audio id(String id) {
     this.id = id;
@@ -41,10 +41,10 @@ public class Audio   {
   /**
    * Get id
    * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
   public String getId() {
     return id;
   }
@@ -61,10 +61,10 @@ public class Audio   {
   /**
    * Get filename
    * @return filename
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "filename", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("filename")
   public String getFilename() {
     return filename;
   }
@@ -81,10 +81,10 @@ public class Audio   {
   /**
    * Get typeMime
    * @return typeMime
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "type_mime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("type_mime")
   public String getTypeMime() {
     return typeMime;
   }
@@ -101,10 +101,10 @@ public class Audio   {
   /**
    * Get fileSize
    * @return fileSize
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "file_size", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("file_size")
   public Integer getFileSize() {
     return fileSize;
   }
@@ -121,10 +121,10 @@ public class Audio   {
   /**
    * Get filepath
    * @return filepath
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "filepath", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("filepath")
   public String getFilepath() {
     return filepath;
   }
@@ -141,10 +141,10 @@ public class Audio   {
   /**
    * Get durationSecond
    * @return durationSecond
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "duration_second", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("duration_second")
   public Integer getDurationSecond() {
     return durationSecond;
   }
@@ -153,9 +153,8 @@ public class Audio   {
     this.durationSecond = durationSecond;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -163,19 +162,23 @@ public class Audio   {
       return false;
     }
     Audio audio = (Audio) o;
-    return Objects.equals(this.id, audio.id)Objects.equals(this.filename, audio.filename)Objects.equals(this.typeMime, audio.typeMime)Objects.equals(this.fileSize, audio.fileSize)Objects.equals(this.filepath, audio.filepath)Objects.equals(this.durationSecond, audio.durationSecond);
+    return Objects.equals(this.id, audio.id) &&
+        Objects.equals(this.filename, audio.filename) &&
+        Objects.equals(this.typeMime, audio.typeMime) &&
+        Objects.equals(this.fileSize, audio.fileSize) &&
+        Objects.equals(this.filepath, audio.filepath) &&
+        Objects.equals(this.durationSecond, audio.durationSecond);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idfilenametypeMimefileSizefilepathdurationSecond);
+    return Objects.hash(id, filename, typeMime, fileSize, filepath, durationSecond);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Audio {\n");
-    
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
     sb.append("    typeMime: ").append(toIndentedString(typeMime)).append("\n");
@@ -190,7 +193,7 @@ public class Audio   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

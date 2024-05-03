@@ -15,7 +15,6 @@ import com.journal.diaryko.endpoint.rest.model.ResourceNotFoundException;
 import com.journal.diaryko.endpoint.rest.model.TooManyRequestsException;
 import com.journal.diaryko.endpoint.rest.model.User;
 import com.journal.diaryko.endpoint.rest.model.Video;
-import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -25,6 +24,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -41,10 +41,9 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T07:38:36.366062500+03:00[Africa/Nairobi]")
-
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
 @Validated
-@io.swagger.v3.oas.annotations.tags.Tag(name = "JournalEntries", description = "the JournalEntries API")
+@Tag(name = "JournalEntries", description = "the JournalEntries API")
 public interface UsersApi {
 
     /**
@@ -89,9 +88,9 @@ public interface UsersApi {
     )
     
     ResponseEntity<JournalEntries> crupdateJournalById(
-        @ApiParam(value = "",required=true) @PathVariable("uid") String uid,
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "Journal entries to create or update" ,required=true )  @Valid @RequestBody JournalEntries journalEntries
+        @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "JournalEntries", description = "Journal entries to create or update", required = true) @Valid @RequestBody JournalEntries journalEntries
     );
 
 
@@ -136,8 +135,8 @@ public interface UsersApi {
     )
     
     ResponseEntity<User> crupdateUserById(
-        @ApiParam(value = "",required=true) @PathVariable("uid") String uid,
-        @ApiParam(value = "User to create or update" ,required=true )  @Valid @RequestBody User user
+        @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
+        @Parameter(name = "User", description = "User to create or update", required = true) @Valid @RequestBody User user
     );
 
 
@@ -181,8 +180,8 @@ public interface UsersApi {
     )
     
     ResponseEntity<JournalEntries> deleteJournalById(
-        @ApiParam(value = "",required=true) @PathVariable("uid") String uid,
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid
+        @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid
     );
 
 
@@ -225,7 +224,7 @@ public interface UsersApi {
     )
     
     ResponseEntity<User> deleteUserById(
-        @ApiParam(value = "",required=true) @PathVariable("uid") String uid
+        @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid
     );
 
 
@@ -269,10 +268,10 @@ public interface UsersApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<> getAudiosByUserId(
-        @ApiParam(value = "",required=true) @PathVariable("uid") String uid,
-        @NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "page", required = true) Integer page,
-        @NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "page_size", required = true) Integer pageSize
+    ResponseEntity<List<Audio>> getAudiosByUserId(
+        @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
+        @NotNull @Parameter(name = "page", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page", required = true) Integer page,
+        @NotNull @Parameter(name = "page_size", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = true) Integer pageSize
     );
 
 
@@ -316,8 +315,8 @@ public interface UsersApi {
     )
     
     ResponseEntity<JournalEntries> getJournalById(
-        @ApiParam(value = "",required=true) @PathVariable("uid") String uid,
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid
+        @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid
     );
 
 
@@ -361,10 +360,10 @@ public interface UsersApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<> getJournalsByUserId(
-        @ApiParam(value = "",required=true) @PathVariable("uid") String uid,
-        @NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "page", required = true) Integer page,
-        @NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "page_size", required = true) Integer pageSize
+    ResponseEntity<List<JournalEntries>> getJournalsByUserId(
+        @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
+        @NotNull @Parameter(name = "page", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page", required = true) Integer page,
+        @NotNull @Parameter(name = "page_size", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = true) Integer pageSize
     );
 
 
@@ -408,10 +407,10 @@ public interface UsersApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<> getPhotosByUserId(
-        @ApiParam(value = "",required=true) @PathVariable("uid") String uid,
-        @NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "page", required = true) Integer page,
-        @NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "page_size", required = true) Integer pageSize
+    ResponseEntity<List<Photo>> getPhotosByUserId(
+        @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
+        @NotNull @Parameter(name = "page", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page", required = true) Integer page,
+        @NotNull @Parameter(name = "page_size", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = true) Integer pageSize
     );
 
 
@@ -454,7 +453,7 @@ public interface UsersApi {
     )
     
     ResponseEntity<User> getUserById(
-        @ApiParam(value = "",required=true) @PathVariable("uid") String uid
+        @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid
     );
 
 
@@ -501,9 +500,9 @@ public interface UsersApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<> getUsers(
-        @NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "page", required = true) Integer page,
-        @NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "page_size", required = true) Integer pageSize
+    ResponseEntity<List<User>> getUsers(
+        @NotNull @Parameter(name = "page", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page", required = true) Integer page,
+        @NotNull @Parameter(name = "page_size", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = true) Integer pageSize
     );
 
 
@@ -547,10 +546,10 @@ public interface UsersApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<> getVideosByUserId(
-        @ApiParam(value = "",required=true) @PathVariable("uid") String uid,
-        @NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "page", required = true) Integer page,
-        @NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "page_size", required = true) Integer pageSize
+    ResponseEntity<List<Video>> getVideosByUserId(
+        @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
+        @NotNull @Parameter(name = "page", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page", required = true) Integer page,
+        @NotNull @Parameter(name = "page_size", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = true) Integer pageSize
     );
 
 }

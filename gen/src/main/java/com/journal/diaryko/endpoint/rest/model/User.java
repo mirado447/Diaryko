@@ -1,5 +1,6 @@
 package com.journal.diaryko.endpoint.rest.model;
-import io.swagger.annotations.ApiModelProperty;
+
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -7,38 +8,37 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.journal.diaryko.endpoint.rest.model.Sex;
 import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.validation.annotation.Validated;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * User
  */
-@Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T07:38:36.366062500+03:00[Africa/Nairobi]")
 
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
+public class User {
 
-public class User   {
-  @JsonProperty("id")
-  private String id = ;
+  private String id;
 
-  @JsonProperty("first_name")
-  private String firstName = ;
+  private String firstName;
 
-  @JsonProperty("last_name")
-  private String lastName = ;
+  private String lastName;
 
-  @JsonProperty("email")
-  private String email = ;
+  private String email;
 
-  @JsonProperty("birth_date")
-  private LocalDate birthDate = ;
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+  private LocalDate birthDate;
 
-  @JsonProperty("sex")
-  private Sex sex = ;
+  private Sex sex;
 
-  @JsonProperty("password")
-  private String password = ;
+  private String password;
 
   public User id(String id) {
     this.id = id;
@@ -48,10 +48,10 @@ public class User   {
   /**
    * Get id
    * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
   public String getId() {
     return id;
   }
@@ -68,10 +68,10 @@ public class User   {
   /**
    * Get firstName
    * @return firstName
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "first_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("first_name")
   public String getFirstName() {
     return firstName;
   }
@@ -88,10 +88,10 @@ public class User   {
   /**
    * Get lastName
    * @return lastName
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "last_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("last_name")
   public String getLastName() {
     return lastName;
   }
@@ -108,10 +108,10 @@ public class User   {
   /**
    * Get email
    * @return email
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("email")
   public String getEmail() {
     return email;
   }
@@ -128,10 +128,10 @@ public class User   {
   /**
    * Get birthDate
    * @return birthDate
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  @Valid 
+  @Schema(name = "birth_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("birth_date")
   public LocalDate getBirthDate() {
     return birthDate;
   }
@@ -148,10 +148,10 @@ public class User   {
   /**
    * Get sex
    * @return sex
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  @Valid 
+  @Schema(name = "sex", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("sex")
   public Sex getSex() {
     return sex;
   }
@@ -168,10 +168,10 @@ public class User   {
   /**
    * Get password
    * @return password
-  **/
-  @ApiModelProperty(value = "")
-
-
+  */
+  
+  @Schema(name = "password", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("password")
   public String getPassword() {
     return password;
   }
@@ -180,9 +180,8 @@ public class User   {
     this.password = password;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -190,19 +189,24 @@ public class User   {
       return false;
     }
     User user = (User) o;
-    return Objects.equals(this.id, user.id)Objects.equals(this.firstName, user.firstName)Objects.equals(this.lastName, user.lastName)Objects.equals(this.email, user.email)Objects.equals(this.birthDate, user.birthDate)Objects.equals(this.sex, user.sex)Objects.equals(this.password, user.password);
+    return Objects.equals(this.id, user.id) &&
+        Objects.equals(this.firstName, user.firstName) &&
+        Objects.equals(this.lastName, user.lastName) &&
+        Objects.equals(this.email, user.email) &&
+        Objects.equals(this.birthDate, user.birthDate) &&
+        Objects.equals(this.sex, user.sex) &&
+        Objects.equals(this.password, user.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idfirstNamelastNameemailbirthDatesexpassword);
+    return Objects.hash(id, firstName, lastName, email, birthDate, sex, password);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class User {\n");
-    
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
@@ -218,7 +222,7 @@ public class User   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

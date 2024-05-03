@@ -13,7 +13,6 @@ import com.journal.diaryko.endpoint.rest.model.ResourceNotFoundException;
 import com.journal.diaryko.endpoint.rest.model.Tag;
 import com.journal.diaryko.endpoint.rest.model.TooManyRequestsException;
 import com.journal.diaryko.endpoint.rest.model.Video;
-import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -39,8 +38,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T07:38:36.366062500+03:00[Africa/Nairobi]")
-
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
 @Validated
 @io.swagger.v3.oas.annotations.tags.Tag(name = "Audio", description = "the Audio API")
 public interface JournalsApi {
@@ -86,8 +84,8 @@ public interface JournalsApi {
     )
     
     ResponseEntity<Audio> addAudio(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "Audio to add" ,required=true )  @Valid @RequestBody Audio audio
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "Audio", description = "Audio to add", required = true) @Valid @RequestBody Audio audio
     );
 
 
@@ -132,8 +130,8 @@ public interface JournalsApi {
     )
     
     ResponseEntity<Tag> addJournalTag(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "tag to add" ,required=true )  @Valid @RequestBody Tag tag
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "Tag", description = "tag to add", required = true) @Valid @RequestBody Tag tag
     );
 
 
@@ -178,8 +176,8 @@ public interface JournalsApi {
     )
     
     ResponseEntity<Photo> addPhoto(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "photo to add" ,required=true )  @Valid @RequestBody Photo photo
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "Photo", description = "photo to add", required = true) @Valid @RequestBody Photo photo
     );
 
 
@@ -224,8 +222,8 @@ public interface JournalsApi {
     )
     
     ResponseEntity<Video> addVideo(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "Video to add" ,required=true )  @Valid @RequestBody Video video
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "Video", description = "Video to add", required = true) @Valid @RequestBody Video video
     );
 
 
@@ -269,8 +267,8 @@ public interface JournalsApi {
     )
     
     ResponseEntity<Audio> deleteAudioById(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "",required=true) @PathVariable("aid") String aid
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "aid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("aid") String aid
     );
 
 
@@ -314,8 +312,8 @@ public interface JournalsApi {
     )
     
     ResponseEntity<Tag> deleteJournalTag(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "",required=true) @PathVariable("tid") String tid
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "tid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("tid") String tid
     );
 
 
@@ -359,8 +357,8 @@ public interface JournalsApi {
     )
     
     ResponseEntity<Photo> deletePhotoById(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "",required=true) @PathVariable("pid") String pid
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "pid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("pid") String pid
     );
 
 
@@ -404,8 +402,8 @@ public interface JournalsApi {
     )
     
     ResponseEntity<Video> deleteVideoById(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "",required=true) @PathVariable("vid") String vid
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "vid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("vid") String vid
     );
 
 
@@ -449,8 +447,8 @@ public interface JournalsApi {
     )
     
     ResponseEntity<Audio> getAudioById(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "",required=true) @PathVariable("aid") String aid
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "aid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("aid") String aid
     );
 
 
@@ -492,8 +490,8 @@ public interface JournalsApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<> getAudiosByJournalId(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid
+    ResponseEntity<List<Audio>> getAudiosByJournalId(
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid
     );
 
 
@@ -537,8 +535,8 @@ public interface JournalsApi {
     )
     
     ResponseEntity<Photo> getPhotoById(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "",required=true) @PathVariable("pid") String pid
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "pid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("pid") String pid
     );
 
 
@@ -580,8 +578,8 @@ public interface JournalsApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<> getPhotosByJournalId(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid
+    ResponseEntity<List<Photo>> getPhotosByJournalId(
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid
     );
 
 
@@ -623,8 +621,8 @@ public interface JournalsApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<> getTagsByJournalId(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid
+    ResponseEntity<List<Tag>> getTagsByJournalId(
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid
     );
 
 
@@ -668,8 +666,8 @@ public interface JournalsApi {
     )
     
     ResponseEntity<Video> getVideoById(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid,
-        @ApiParam(value = "",required=true) @PathVariable("vid") String vid
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
+        @Parameter(name = "vid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("vid") String vid
     );
 
 
@@ -711,8 +709,8 @@ public interface JournalsApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<> getVideosByJournalId(
-        @ApiParam(value = "",required=true) @PathVariable("jid") String jid
+    ResponseEntity<List<Video>> getVideosByJournalId(
+        @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid
     );
 
 }

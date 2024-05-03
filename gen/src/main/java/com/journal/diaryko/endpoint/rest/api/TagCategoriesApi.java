@@ -9,8 +9,8 @@ import com.journal.diaryko.endpoint.rest.model.BadRequestException;
 import com.journal.diaryko.endpoint.rest.model.InternalServerException;
 import com.journal.diaryko.endpoint.rest.model.ResourceNotFoundException;
 import com.journal.diaryko.endpoint.rest.model.Tag;
+import com.journal.diaryko.endpoint.rest.model.TagCategories;
 import com.journal.diaryko.endpoint.rest.model.TooManyRequestsException;
-import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -36,8 +36,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T07:38:36.366062500+03:00[Africa/Nairobi]")
-
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
 @Validated
 @io.swagger.v3.oas.annotations.tags.Tag(name = "Tag", description = "the Tag API")
 public interface TagCategoriesApi {
@@ -82,8 +81,8 @@ public interface TagCategoriesApi {
     )
     
     ResponseEntity<Tag> getTagById(
-        @ApiParam(value = "",required=true) @PathVariable("cid") String cid,
-        @ApiParam(value = "",required=true) @PathVariable("tid") String tid
+        @Parameter(name = "cid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("cid") String cid,
+        @Parameter(name = "tid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("tid") String tid
     );
 
 
@@ -102,7 +101,7 @@ public interface TagCategoriesApi {
         tags = { "Tag" },
         responses = {
             @ApiResponse(responseCode = "200", description = "List of tag categories", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Tag.class)))
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = TagCategories.class)))
             }),
             @ApiResponse(responseCode = "400", description = "Bad request", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BadRequestException.class))
@@ -124,7 +123,7 @@ public interface TagCategoriesApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<> getTagCategories(
+    ResponseEntity<List<TagCategories>> getTagCategories(
         
     );
 
@@ -167,8 +166,8 @@ public interface TagCategoriesApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<> getTags(
-        @ApiParam(value = "",required=true) @PathVariable("cid") String cid
+    ResponseEntity<List<Tag>> getTags(
+        @Parameter(name = "cid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("cid") String cid
     );
 
 }
