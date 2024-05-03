@@ -70,14 +70,14 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/users/{id}':
+  '/users/{uid}':
     get:
       tags:
         - User
       summary: get user by id
       operationId: getUserById
       parameters:
-        - name: user_id
+        - name: uid
           in: path
           required: true
           schema:
@@ -103,7 +103,7 @@ paths:
       summary: create or update user by id
       operationId: crupdateUserById
       parameters:
-        - name: user_id
+        - name: uid
           in: path
           required: true
           schema:
@@ -136,7 +136,7 @@ paths:
       summary: delete user by id
       operationId: deleteUserById
       parameters:
-        - name: user_id
+        - name: uid
           in: path
           required: true
           schema:
@@ -158,14 +158,14 @@ paths:
           $ref: '#/components/responses/500'
 
   ## Journal resources
-  '/users/{id}/Journals':
+  '/users/{uid}/Journals':
     get:
       tags:
         - JournalEntries
       summary: get all journal entries by user id
       operationId: getJournalsByUserId
       parameters:
-        - name: user_id
+        - name: uid
           in: path
           required: true
           schema:
@@ -198,19 +198,19 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/users/{id}/Journals/{id}':
+  '/users/{uid}/Journals/{jid}':
     get:
       tags:
         - JournalEntries
       summary: get journal entries by id
       operationId: getJournalById
       parameters:
-        - name: user_id
+        - name: uid
           in: path
           required: true
           schema:
             type: string
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
@@ -237,12 +237,12 @@ paths:
       summary: create or update journal entries by id
       operationId: crupdateJournalById
       parameters:
-        - name: user_id
+        - name: uid
           in: path
           required: true
           schema:
             type: string
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
@@ -276,12 +276,12 @@ paths:
       summary: delete journal entries by id
       operationId: deleteJournalById
       parameters:
-        - name: user_id
+        - name: uid
           in: path
           required: true
           schema:
             type: string
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
@@ -327,14 +327,14 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/tagCategories/{id}/tags':
+  '/tagCategories/{cid}/tags':
     get:
       tags:
         - Tag
       summary: get all tags by tag categories id
       operationId: getTags
       parameters:
-        - name: tag_categories_id
+        - name: cid
           in: path
           required: true
           schema:
@@ -357,19 +357,19 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/tagCategories/{id}/tags/{id}':
+  '/tagCategories/{cid}/tags/{tid}':
     get:
       tags:
         - Tag
       summary: get tag by id
       operationId: getTagById
       parameters:
-        - name: tag_categories_id
+        - name: cid
           in: path
           required: true
           schema:
             type: string
-        - name: tag_id
+        - name: tid
           in: path
           required: true
           schema:
@@ -390,14 +390,14 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/journals/{id}/tags':
+  '/journals/{jid}/tags':
     get:
       tags:
         - Tag
       summary: get all tags by journal entries id
       operationId: getTagsByJournalId
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
@@ -426,7 +426,7 @@ paths:
       summary: Add tag in journal entries
       operationId: AddJournalTag
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
@@ -454,19 +454,19 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/journals/{id}/tags/{id}':
+  '/journals/{jid}/tags/{tid}':
     delete:
       tags:
         - Tag
       summary: Delete tag in journal entries
       operationId: DeleteJournalTag
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
             type: string
-        - name: tag_id
+        - name: tid
           in: path
           required: true
           schema:
@@ -488,14 +488,14 @@ paths:
           $ref: '#/components/responses/500'
 
   ## Photo resources
-  '/users/{id}/photos':
+  '/users/{uid}/photos':
     get:
       tags:
         - Photo
       summary: get all photos by user id
       operationId: getPhotosByUserId
       parameters:
-        - name: user_id
+        - name: uid
           in: path
           required: true
           schema:
@@ -528,14 +528,14 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/journals/{id}/photos':
+  '/journals/{jid}/photos':
     get:
       tags:
         - Photo
       summary: get all photos by journal entries id
       operationId: getPhotosByJournalId
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
@@ -564,7 +564,7 @@ paths:
       summary: Add photo to journal entries
       operationId: AddPhoto
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
@@ -592,19 +592,19 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/journals/{id}/photos/{id}':
+  '/journals/{jid}/photos/{pid}':
     get:
       tags:
         - Photo
       summary: get photo by id
       operationId: getPhotoById
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
             type: string
-        - name: photo_id
+        - name: pid
           in: path
           required: true
           schema:
@@ -631,12 +631,12 @@ paths:
       summary: Delete photo to journal entries
       operationId: DeletePhotoById
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
             type: string
-        - name: photo_id
+        - name: pid
           in: path
           required: true
           schema:
@@ -658,14 +658,14 @@ paths:
           $ref: '#/components/responses/500'
 
   ## Audio resources
-  '/users/{id}/audios':
+  '/users/{uid}/audios':
     get:
       tags:
         - Audio
       summary: get all audios by user id
       operationId: getAudiosByUserId
       parameters:
-        - name: user_id
+        - name: uid
           in: path
           required: true
           schema:
@@ -698,14 +698,14 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/journals/{id}/audios':
+  '/journals/{jid}/audios':
     get:
       tags:
         - Audio
       summary: get all audios by journal id
       operationId: getAudiosByJournalId
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
@@ -734,7 +734,7 @@ paths:
       summary: Add audio to journal entries
       operationId: AddAudio
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
@@ -762,19 +762,19 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/journals/{id}/audios/{id}':
+  '/journals/{jid}/audios/{aid}':
     get:
       tags:
         - Audio
       summary: get audio by id
       operationId: getAudioById
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
             type: string
-        - name: audio_id
+        - name: aid
           in: path
           required: true
           schema:
@@ -801,12 +801,12 @@ paths:
       summary: Delete audio to journal entries
       operationId: DeleteAudioById
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
             type: string
-        - name: audio_id
+        - name: aid
           in: path
           required: true
           schema:
@@ -828,14 +828,14 @@ paths:
           $ref: '#/components/responses/500'
 
   ## Video resources
-  '/users/{id}/videos':
+  '/users/{uid}/videos':
     get:
       tags:
         - Video
       summary: get all videos by user id
       operationId: getVideosByUserId
       parameters:
-        - name: user_id
+        - name: uid
           in: path
           required: true
           schema:
@@ -868,14 +868,14 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/journals/{id}/videos':
+  '/journals/{jid}/videos':
     get:
       tags:
         - Video
       summary: get all videos by journal entries id
       operationId: getVideosByJournalId
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
@@ -904,7 +904,7 @@ paths:
       summary: Add video to journal entries
       operationId: AddVideo
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
@@ -932,19 +932,19 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  '/journals/{id}/videos/{id}':
+  '/journals/{jid}/videos/{vid}':
     get:
       tags:
         - Video
       summary: get video by id
       operationId: getVideoById
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
             type: string
-        - name: video_id
+        - name: vid
           in: path
           required: true
           schema:
@@ -971,12 +971,12 @@ paths:
       summary: Delete video to journal entries
       operationId: DeleteVideoById
       parameters:
-        - name: journal_id
+        - name: jid
           in: path
           required: true
           schema:
             type: string
-        - name: video_id
+        - name: vid
           in: path
           required: true
           schema:
@@ -1097,6 +1097,8 @@ components:
           format: date
         sex:
           $ref: '#/components/schemas/Sex'
+        password:
+          type: string
 
     ## Journal entries model
     JournalEntries:

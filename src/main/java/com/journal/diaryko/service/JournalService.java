@@ -62,4 +62,10 @@ public class JournalService {
         }
         return journal;
     }
+
+    public Journal getJournalById(String jid){
+        return journalRepository
+                .findById(jid)
+                .orElseThrow(() -> new NotFoundException("Journal with id " + jid + " not found"));
+    }
 }
