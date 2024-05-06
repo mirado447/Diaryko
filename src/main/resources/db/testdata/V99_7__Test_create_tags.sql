@@ -1,6 +1,6 @@
-INSERT INTO tag_categories (
+INSERT INTO tag (
     id,
-    category_name,
+    tag_name,
     id_category
 )
 VALUES
