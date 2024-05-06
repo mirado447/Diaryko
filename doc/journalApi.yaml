@@ -1071,8 +1071,8 @@ components:
     Sex:
       type: string
       enum:
-        - Male
-        - Female
+        - M
+        - F
     page:
       type: integer
       description: start at `1`
