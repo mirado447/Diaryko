@@ -1073,6 +1073,7 @@ components:
       enum:
         - M
         - F
+        - OTHER
     page:
       type: integer
       description: start at `1`
