@@ -38,7 +38,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-07T13:28:20.746321300+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-08T13:45:57.022363900+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
 @Validated
 @io.swagger.v3.oas.annotations.tags.Tag(name = "Audio", description = "the Audio API")
 public interface JournalsApi {
