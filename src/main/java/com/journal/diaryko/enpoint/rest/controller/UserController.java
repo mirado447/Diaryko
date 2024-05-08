@@ -1,4 +1,4 @@
-package com.journal.diaryko.controller;
+package com.journal.diaryko.enpoint.rest.controller;
 
 import com.journal.diaryko.model.BoundedPageSize;
 import com.journal.diaryko.model.PageFromOne;

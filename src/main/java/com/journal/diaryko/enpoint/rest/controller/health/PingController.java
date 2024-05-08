@@ -1,10 +1,10 @@
-package com.journal.diaryko.controller;
+package com.journal.diaryko.enpoint.rest.controller.health;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HealthController {
+public class PingController {
     @GetMapping("/ping")
     public String ping(){
         return "pong";

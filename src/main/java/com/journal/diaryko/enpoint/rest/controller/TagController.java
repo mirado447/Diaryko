@@ -1,4 +1,4 @@
-package com.journal.diaryko.controller;
+package com.journal.diaryko.enpoint.rest.controller;
 
 import com.journal.diaryko.repository.model.Tag;
 import com.journal.diaryko.service.TagService;
