@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * NotAuthorizedException
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-03T12:20:17.797583700+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-07T13:28:20.746321300+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
 public class NotAuthorizedException {
 
   private String type;
