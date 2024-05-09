@@ -31,17 +31,10 @@ public class UserService {
     public User saveUser(String id, User user){
         Optional<User> optionalUser = repository.findById(id);
         if(optionalUser.isPresent()){
-            User userToUpdate = optionalUser.get();
-            userToUpdate.setFirstname(user.getFirstname());
-            userToUpdate.setLastname(user.getLastname());
-            userToUpdate.setEmail(user.getEmail());
-            userToUpdate.setBirthdate(user.getBirthdate());
-            userToUpdate.setSex(user.getSex());
-            userToUpdate.setPassword(user.getPassword());
-        }else {
-            repository.save(user);
+            User userFromDomain = optionalUser.get();
+            user.setBirthdate(userFromDomain.getBirthdate());
         }
-        return user;
+        return repository.save(user);
     }
 
     public User deleteUser(String id){
