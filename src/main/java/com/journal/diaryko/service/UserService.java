@@ -32,7 +32,7 @@ public class UserService {
         Optional<User> optionalUser = repository.findById(id);
         if(optionalUser.isPresent()){
             User userFromDomain = optionalUser.get();
-            user.setBirthdate(userFromDomain.getBirthdate());
+            user.setBirthdate(userFromDomain.getBirthdate());   // Here we save the user with new information and don't touch those who don't need to be changed (since the first save). Instead of changing everything from the old user with the information from the new.
         }
         return repository.save(user);
     }
