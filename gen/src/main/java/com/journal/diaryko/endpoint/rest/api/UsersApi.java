@@ -8,7 +8,7 @@ package com.journal.diaryko.endpoint.rest.api;
 import com.journal.diaryko.endpoint.rest.model.Audio;
 import com.journal.diaryko.endpoint.rest.model.BadRequestException;
 import com.journal.diaryko.endpoint.rest.model.InternalServerException;
-import com.journal.diaryko.endpoint.rest.model.JournalEntries;
+import com.journal.diaryko.endpoint.rest.model.Journal;
 import com.journal.diaryko.endpoint.rest.model.NotAuthorizedException;
 import com.journal.diaryko.endpoint.rest.model.Photo;
 import com.journal.diaryko.endpoint.rest.model.ResourceNotFoundException;
@@ -41,9 +41,9 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-08T13:45:57.022363900+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-09T14:05:23.262763200+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
 @Validated
-@Tag(name = "JournalEntries", description = "the JournalEntries API")
+@Tag(name = "Journal", description = "the Journal API")
 public interface UsersApi {
 
     /**
@@ -51,7 +51,7 @@ public interface UsersApi {
      *
      * @param uid  (required)
      * @param jid  (required)
-     * @param journalEntries Journal entries to create or update (required)
+     * @param journal Journal entries to create or update (required)
      * @return created or updated journal entries (status code 200)
      *         or Bad request (status code 400)
      *         or Not found (status code 404)
@@ -61,10 +61,10 @@ public interface UsersApi {
     @Operation(
         operationId = "crupdateJournalById",
         summary = "create or update journal entries by id",
-        tags = { "JournalEntries" },
+        tags = { "Journal" },
         responses = {
             @ApiResponse(responseCode = "200", description = "created or updated journal entries", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = JournalEntries.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Journal.class))
             }),
             @ApiResponse(responseCode = "400", description = "Bad request", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BadRequestException.class))
@@ -87,10 +87,10 @@ public interface UsersApi {
         consumes = { "application/json" }
     )
     
-    ResponseEntity<JournalEntries> crupdateJournalById(
+    ResponseEntity<Journal> crupdateJournalById(
         @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
         @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid,
-        @Parameter(name = "JournalEntries", description = "Journal entries to create or update", required = true) @Valid @RequestBody JournalEntries journalEntries
+        @Parameter(name = "Journal", description = "Journal entries to create or update", required = true) @Valid @RequestBody Journal journal
     );
 
 
@@ -154,10 +154,10 @@ public interface UsersApi {
     @Operation(
         operationId = "deleteJournalById",
         summary = "delete journal entries by id",
-        tags = { "JournalEntries" },
+        tags = { "Journal" },
         responses = {
             @ApiResponse(responseCode = "200", description = "deleted journal entries", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = JournalEntries.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Journal.class))
             }),
             @ApiResponse(responseCode = "400", description = "Bad request", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BadRequestException.class))
@@ -179,7 +179,7 @@ public interface UsersApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<JournalEntries> deleteJournalById(
+    ResponseEntity<Journal> deleteJournalById(
         @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
         @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid
     );
@@ -289,10 +289,10 @@ public interface UsersApi {
     @Operation(
         operationId = "getJournalById",
         summary = "get journal entries by id",
-        tags = { "JournalEntries" },
+        tags = { "Journal" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Journal entries by id", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = JournalEntries.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Journal.class))
             }),
             @ApiResponse(responseCode = "400", description = "Bad request", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BadRequestException.class))
@@ -314,7 +314,7 @@ public interface UsersApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<JournalEntries> getJournalById(
+    ResponseEntity<Journal> getJournalById(
         @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
         @Parameter(name = "jid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("jid") String jid
     );
@@ -335,10 +335,10 @@ public interface UsersApi {
     @Operation(
         operationId = "getJournalsByUserId",
         summary = "get all journal entries by user id",
-        tags = { "JournalEntries" },
+        tags = { "Journal" },
         responses = {
             @ApiResponse(responseCode = "200", description = "List of journal entries by user id", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = JournalEntries.class)))
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Journal.class)))
             }),
             @ApiResponse(responseCode = "400", description = "Bad request", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BadRequestException.class))
@@ -360,7 +360,7 @@ public interface UsersApi {
         produces = { "application/json" }
     )
     
-    ResponseEntity<List<JournalEntries>> getJournalsByUserId(
+    ResponseEntity<List<Journal>> getJournalsByUserId(
         @Parameter(name = "uid", description = "", required = true, in = ParameterIn.PATH) @PathVariable("uid") String uid,
         @NotNull @Parameter(name = "page", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page", required = true) Integer page,
         @NotNull @Parameter(name = "page_size", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = true) Integer pageSize

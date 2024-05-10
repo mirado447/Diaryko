@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-08T13:45:57.022363900+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-05-09T14:05:23.262763200+03:00[Africa/Nairobi]", comments = "Generator version: 7.5.0")
 @Validated
 @Tag(name = "Health", description = "the Health API")
 public interface PingApi {
