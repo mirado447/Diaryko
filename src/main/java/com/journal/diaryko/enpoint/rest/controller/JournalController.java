@@ -3,7 +3,6 @@ package com.journal.diaryko.enpoint.rest.controller;
 import com.journal.diaryko.enpoint.mapper.JournalMapper;
 import com.journal.diaryko.model.BoundedPageSize;
 import com.journal.diaryko.model.PageFromOne;
-import com.journal.diaryko.repository.model.Journal;
 import com.journal.diaryko.service.JournalService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
