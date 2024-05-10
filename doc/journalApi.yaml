@@ -161,7 +161,7 @@ paths:
   '/users/{uid}/Journals':
     get:
       tags:
-        - JournalEntries
+        - Journal
       summary: get all journal entries by user id
       operationId: getJournalsByUserId
       parameters:
@@ -188,7 +188,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/JournalEntries'
+                  $ref: '#/components/schemas/Journal'
         '400':
           $ref: '#/components/responses/400'
         '404':
@@ -201,7 +201,7 @@ paths:
   '/users/{uid}/Journals/{jid}':
     get:
       tags:
-        - JournalEntries
+        - Journal
       summary: get journal entries by id
       operationId: getJournalById
       parameters:
@@ -221,7 +221,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JournalEntries'
+                $ref: '#/components/schemas/Journal'
         '400':
           $ref: '#/components/responses/400'
         '404':
@@ -233,7 +233,7 @@ paths:
 
     put:
       tags:
-        - JournalEntries
+        - Journal
       summary: create or update journal entries by id
       operationId: crupdateJournalById
       parameters:
@@ -253,14 +253,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/JournalEntries'
+              $ref: '#/components/schemas/Journal'
       responses:
         '200':
           description: created or updated journal entries
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JournalEntries'
+                $ref: '#/components/schemas/Journal'
         '400':
           $ref: '#/components/responses/400'
         '404':
@@ -272,7 +272,7 @@ paths:
 
     delete:
       tags:
-        - JournalEntries
+        - Journal
       summary: delete journal entries by id
       operationId: deleteJournalById
       parameters:
@@ -292,7 +292,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JournalEntries'
+                $ref: '#/components/schemas/Journal'
         '400':
           $ref: '#/components/responses/400'
         '404':
@@ -1102,20 +1102,22 @@ components:
           type: string
 
     ## Journal entries model
-    JournalEntries:
+    Journal:
       type: object
       properties:
         id:
           type: string
-        creation_date:
+        create_at:
           type: string
           format: date
-        update_date:
+        update_at:
           type: string
           format: date
         title:
           type: string
         content:
+          type: string
+        id_user:
           type: string
 
     ## Multimedia files model
