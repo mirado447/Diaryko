@@ -1,5 +1,6 @@
 package com.journal.diaryko.enpoint.rest.controller;
 
+import com.journal.diaryko.enpoint.mapper.TagMapper;
 import com.journal.diaryko.repository.model.Tag;
 import com.journal.diaryko.service.TagService;
 import lombok.AllArgsConstructor;
@@ -13,15 +14,20 @@ import java.util.List;
 @AllArgsConstructor
 public class TagController {
     private final TagService tagService;
+    private final TagMapper tagMapper;
 
     @GetMapping("/tagCategories/{cid}/tags")
-    public List<Tag> getTags(@PathVariable String cid){
-        return tagService.getTagsByCategoryId(cid);
+    public List<com.journal.diaryko.endpoint.rest.model.Tag> getTags(@PathVariable String cid){
+        return tagService.getTagsByCategoryId(cid)
+                .stream()
+                .map(tagMapper::toRest)
+                .toList();
     }
 
     @GetMapping("/tagCategories/{cid}/tags/{tid}")
-    public Tag getTagById(@PathVariable String cid,
-                             @PathVariable String tid){
-        return tagService.getByIdAndCategoryId(tid, cid);
+    public com.journal.diaryko.endpoint.rest.model.Tag getTagById(
+            @PathVariable String cid,
+            @PathVariable String tid){
+        return tagMapper.toRest(tagService.getByIdAndCategoryId(tid, cid));
     }
 }
