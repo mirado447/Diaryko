@@ -1,5 +1,6 @@
 package com.journal.diaryko.enpoint.rest.controller;
 
+import com.journal.diaryko.enpoint.mapper.JournalMapper;
 import com.journal.diaryko.model.BoundedPageSize;
 import com.journal.diaryko.model.PageFromOne;
 import com.journal.diaryko.repository.model.Journal;
@@ -19,33 +20,37 @@ import java.util.List;
 @AllArgsConstructor
 public class JournalController {
     private final JournalService service;
+    private final JournalMapper journalMapper;
 
     @GetMapping("/users/{userId}/journals")
-    public List<Journal> getJournalsByUserId(
+    public List<com.journal.diaryko.endpoint.rest.model.Journal> getJournalsByUserId(
             @PathVariable String userId,
             @RequestParam int page,
             @RequestParam(value = "page_size") int pageSize){
         PageFromOne pageFromOne = new PageFromOne(page);
         BoundedPageSize boundedPageSize = new BoundedPageSize(pageSize);
-        return service.getJournalsByUserId(userId, pageFromOne, boundedPageSize);
+        return service.getJournalsByUserId(userId, pageFromOne, boundedPageSize)
+                .stream()
+                .map(journalMapper::toRest)
+                .toList();
     }
     @GetMapping("/users/{uid}/journals/{jid}")
-    public Journal getJournalById(
+    public com.journal.diaryko.endpoint.rest.model.Journal getJournalById(
             @PathVariable String uid,
             @PathVariable String jid){
-        return service.getJournalByIdAndUserId(uid, jid);
+        return journalMapper.toRest(service.getJournalByIdAndUserId(uid, jid));
     }
     @PutMapping("/users/{uid}/journals/{jid}")
-    public Journal crupdateJournal(
+    public com.journal.diaryko.endpoint.rest.model.Journal crupdateJournal(
             @PathVariable String uid,
             @PathVariable String jid,
-            @RequestBody Journal journal){
-      return service.saveJournal(uid, jid, journal);
+            @RequestBody com.journal.diaryko.endpoint.rest.model.Journal journal){
+      return journalMapper.toRest(service.saveJournal(uid, jid, journalMapper.toDomain(journal)));
     }
     @DeleteMapping("/users/{uid}/journals/{jid}")
-    public Journal deleteJournalById(
+    public com.journal.diaryko.endpoint.rest.model.Journal deleteJournalById(
             @PathVariable String uid,
             @PathVariable String jid){
-        return service.deletejournal(uid, jid);
+        return journalMapper.toRest(service.deletejournal(uid, jid));
     }
 }
