@@ -1,7 +1,6 @@
 package com.journal.diaryko.enpoint.rest.controller;
 
 import com.journal.diaryko.enpoint.mapper.TagMapper;
-import com.journal.diaryko.repository.model.Tag;
 import com.journal.diaryko.service.TagService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
