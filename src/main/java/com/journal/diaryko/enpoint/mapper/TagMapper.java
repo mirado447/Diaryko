@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class TagMapper {
-    public com.journal.diaryko.endpoint.rest.model.Tag toRest(Tag rest){
+    public com.journal.diaryko.endpoint.rest.model.Tag toRest(Tag domain){
         return new com.journal.diaryko.endpoint.rest.model.Tag()
-                .id(rest.getId())
-                .tagName(rest.getTag_name());
+                .id(domain.getId())
+                .tagName(domain.getTag_name());
     }
 }
