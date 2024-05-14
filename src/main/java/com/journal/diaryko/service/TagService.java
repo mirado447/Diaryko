@@ -29,4 +29,10 @@ public class TagService {
             throw new NotFoundException("Tag with id " + tid + ", in category with id " + cid + " not found");
         }
     }
+
+    public Tag getById(String tid){
+        return repository
+                .findById(tid)
+                .orElseThrow(() -> new NotFoundException("Tag with id " + tid + " not found"));
+    }
 }
