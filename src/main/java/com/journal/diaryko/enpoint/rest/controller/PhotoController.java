@@ -29,4 +29,16 @@ public class PhotoController {
                 .map(photoMapper::toRest)
                 .toList();
     }
+    @GetMapping("/journals/{jid}/photos")
+    public List<com.journal.diaryko.endpoint.rest.model.Photo> getPhotosByJournalId(
+            @PathVariable String jid,
+            @RequestParam int page,
+            @RequestParam(value = "page_size") int pageSize){
+        PageFromOne pageFromOne = new PageFromOne(page);
+        BoundedPageSize boundedPageSize = new BoundedPageSize(pageSize);
+        return photoService.getPhotosByJournalId(jid, pageFromOne, boundedPageSize)
+                .stream()
+                .map(photoMapper::toRest)
+                .toList();
+    }
 }

@@ -3,6 +3,7 @@ package com.journal.diaryko.service;
 import com.journal.diaryko.model.BoundedPageSize;
 import com.journal.diaryko.model.PageFromOne;
 import com.journal.diaryko.repository.PhotoRepository;
+import com.journal.diaryko.repository.model.Journal;
 import com.journal.diaryko.repository.model.Photo;
 import com.journal.diaryko.repository.model.User;
 import lombok.AllArgsConstructor;
@@ -17,9 +18,15 @@ import java.util.List;
 public class PhotoService {
     private final PhotoRepository repository;
     private final UserService userService;
+    private final JournalService journalService;
     public List<Photo> getPhotosByUserId(String uid, PageFromOne page, BoundedPageSize pageSize){
         Pageable pageable = PageRequest.of(page.getValue() - 1, pageSize.getValue());
         User user = userService.getUserById(uid);
         return repository.findAllByUserId(user.getId(), pageable);
+    }
+    public List<Photo> getPhotosByJournalId(String jid, PageFromOne page, BoundedPageSize pageSize){
+        Pageable pageable = PageRequest.of(page.getValue() - 1, pageSize.getValue());
+        Journal journal = journalService.getJournalById(jid);
+        return repository.findAllByJournalId(journal.getId(), pageable);
     }
 }
