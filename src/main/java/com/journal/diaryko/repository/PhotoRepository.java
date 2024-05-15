@@ -13,4 +13,5 @@ public interface PhotoRepository extends JpaRepository<Photo, String> {
     @Query("select photo from Photo photo where photo.journal.user.id = :uid")
     List<Photo> findAllByUserId(String uid, Pageable pageable);
     List<Photo> findAllByJournalId(String jid, Pageable pageable);
+    Photo findByIdAndJournalId(String pid, String jid);
 }

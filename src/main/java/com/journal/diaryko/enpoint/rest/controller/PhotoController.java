@@ -45,4 +45,10 @@ public class PhotoController {
             @RequestBody com.journal.diaryko.endpoint.rest.model.Photo photo){
         return photoMapper.toRest(photoService.AddPhoto(jid, photoMapper.toDomain(photo)));
     }
+    @GetMapping("/journals/{jid}/photos/{tid}")
+    public com.journal.diaryko.endpoint.rest.model.Photo getByIdAndJournalId(
+            @PathVariable String jid,
+            @PathVariable String tid){
+        return photoMapper.toRest(photoService.getPhotoByIdAndJournalId(jid, tid));
+    }
 }

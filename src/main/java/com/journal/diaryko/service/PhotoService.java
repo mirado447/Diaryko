@@ -2,6 +2,7 @@ package com.journal.diaryko.service;
 
 import com.journal.diaryko.model.BoundedPageSize;
 import com.journal.diaryko.model.PageFromOne;
+import com.journal.diaryko.model.exception.NotFoundException;
 import com.journal.diaryko.repository.PhotoRepository;
 import com.journal.diaryko.repository.model.Journal;
 import com.journal.diaryko.repository.model.Photo;
@@ -35,5 +36,13 @@ public class PhotoService {
         photo.setCreate_at(LocalDate.now());
         photo.setJournal(journal);
         return repository.save(photo);
+    }
+    public Photo getPhotoByIdAndJournalId(String jid, String pid){
+        Journal journal = journalService.getJournalById(jid);
+        Photo photo = repository.findByIdAndJournalId(pid, journal.getId());
+        if(photo != null){
+            return photo;
+        }
+        throw new NotFoundException("Photo with id " + pid + ", in journal id " + jid + " not found");
     }
 }
