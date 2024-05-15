@@ -13,4 +13,6 @@ import java.util.List;
 public interface JournalTagsRepository extends JpaRepository<JournalTags, String> {
     @Query("select jt.tag from JournalTags jt where jt.journal.id = :jid")
     List<Tag> findAllByJournalId(@Param("jid") String jid);
+    @Query("select  jt from JournalTags jt where jt.journal.id = :jid and  jt.tag.id = :tid")
+    JournalTags findByJournalIdAndTagId(String jid, String tid);
 }
