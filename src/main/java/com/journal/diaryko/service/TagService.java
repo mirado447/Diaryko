@@ -26,7 +26,7 @@ public class TagService {
         if (tag != null){
             return tag;
         }else{
-            throw new NotFoundException("Tag with id " + tid + ", in category with id " + cid + " not found");
+            throw new NotFoundException("Tag with id " + tid + ", in category id " + cid + " not found");
         }
     }
 
