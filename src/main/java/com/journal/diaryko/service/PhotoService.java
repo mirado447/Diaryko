@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -28,5 +29,11 @@ public class PhotoService {
         Pageable pageable = PageRequest.of(page.getValue() - 1, pageSize.getValue());
         Journal journal = journalService.getJournalById(jid);
         return repository.findAllByJournalId(journal.getId(), pageable);
+    }
+    public Photo AddPhoto(String jid, Photo photo){
+        Journal journal = journalService.getJournalById(jid);
+        photo.setCreate_at(LocalDate.now());
+        photo.setJournal(journal);
+        return repository.save(photo);
     }
 }
