@@ -15,7 +15,6 @@ public class PhotoMapper {
                 .fileSize(domain.getFile_size())
                 .filepath(domain.getFilepath());
     }
-
     public Photo toDomain(com.journal.diaryko.endpoint.rest.model.Photo rest){
         return Photo.builder()
                 .id(rest.getId())

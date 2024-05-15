@@ -45,4 +45,9 @@ public class PhotoService {
         }
         throw new NotFoundException("Photo with id " + pid + ", in journal id " + jid + " not found");
     }
+    public Photo deletePhoto(String jid, String pid){
+        Photo photo = getPhotoByIdAndJournalId(jid, pid);
+        repository.delete(photo);
+        return photo;
+    }
 }

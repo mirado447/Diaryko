@@ -3,7 +3,6 @@ package com.journal.diaryko.enpoint.rest.controller;
 import com.journal.diaryko.enpoint.mapper.PhotoMapper;
 import com.journal.diaryko.model.BoundedPageSize;
 import com.journal.diaryko.model.PageFromOne;
-import com.journal.diaryko.repository.model.Photo;
 import com.journal.diaryko.service.PhotoService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -45,10 +44,16 @@ public class PhotoController {
             @RequestBody com.journal.diaryko.endpoint.rest.model.Photo photo){
         return photoMapper.toRest(photoService.AddPhoto(jid, photoMapper.toDomain(photo)));
     }
-    @GetMapping("/journals/{jid}/photos/{tid}")
+    @GetMapping("/journals/{jid}/photos/{pid}")
     public com.journal.diaryko.endpoint.rest.model.Photo getByIdAndJournalId(
             @PathVariable String jid,
-            @PathVariable String tid){
-        return photoMapper.toRest(photoService.getPhotoByIdAndJournalId(jid, tid));
+            @PathVariable String pid){
+        return photoMapper.toRest(photoService.getPhotoByIdAndJournalId(jid, pid));
+    }
+    @DeleteMapping("/journals/{jid}/photos/{pid}")
+    public com.journal.diaryko.endpoint.rest.model.Photo deletePhoto(
+            @PathVariable String jid,
+            @PathVariable String pid){
+        return photoMapper.toRest(photoService.deletePhoto(jid, pid));
     }
 }
