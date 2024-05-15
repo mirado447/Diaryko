@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 
@@ -27,5 +28,11 @@ public class JournalTagsController {
             @PathVariable String jid,
             @PathVariable String tid){
         return tagMapper.toRest(service.AddJournalTags(jid,tid));
+    }
+    @DeleteMapping("/journals/{jid}/tags/{tid}")
+    public com.journal.diaryko.endpoint.rest.model.Tag DeleteJournalTags(
+            @PathVariable String jid,
+            @PathVariable String tid){
+        return tagMapper.toRest(service.DeleteJournalTags(jid, tid));
     }
 }
